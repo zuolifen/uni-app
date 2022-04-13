@@ -31,7 +31,7 @@
 			<headerSerch class="mp-header skeleton" :dataConfig="headerSerch.default"
 				@click.native="bindEdit('headerSerch', 'default')"></headerSerch>
 			<!-- 轮播 -->
-			<swiperBg :dataConfig="swiperBg.default" @click.native="bindEdit('swiperBg', 'default')"></swiperBg>
+			<swiperBg :dataConfig="swiperBg" @click.native="bindEdit('swiperBg', 'default')"></swiperBg>
 			<!-- 金刚区 -->
 			<menus :dataConfig="menus.default" @click.native="bindEdit('menus', 'default')"></menus>
 			<!-- 新闻简报 -->
@@ -169,6 +169,9 @@
 		getCouponV2,
 		getCouponNewUser,
 	} from "@/api/api.js";
+	import {
+		getBannerList
+	} from "@/api/traveApi.js";
 	import {
 		getGroomList,
 		getCategoryList,
@@ -317,6 +320,7 @@
 			this.getFollow();
 			// #endif
 			this.diyData();
+			this.getBannerList();
 			this.getIndexData();
 			// #ifdef MP
 			if (this.$Cache.get(TIPS_KEY)) this.iShidden = true;
@@ -500,13 +504,14 @@
 				});
 				// #endif
 			},
+			
 			onLoadFun() {},
 			diyData() {
 				let that = this;
 				getDiy().then((res) => {
 					let data = res.data;
 					that.headerSerch = data.headerSerch;
-					that.swiperBg = data.swiperBg;
+					
 					that.menus = data.menus;
 					that.news = data.news;
 					that.activity = data.activity;
@@ -528,6 +533,13 @@
 						this.showSkeleton = false;
 					}, 1000);
 				});
+			},
+			// 获取轮播图数据
+			getBannerList(){
+				let that = this;
+				getBannerList().then((res)=>{
+					that.swiperBg = res.data;
+				})
 			},
 			getIndexData() {
 				getIndexData().then((res) => {

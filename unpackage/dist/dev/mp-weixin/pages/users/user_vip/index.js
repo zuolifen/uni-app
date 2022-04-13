@@ -432,7 +432,7 @@ var _vuex = __webpack_require__(/*! vuex */ 14); //
 //
 //
 //
-var authorize = function authorize() {__webpack_require__.e(/*! require.ensure | components/Authorize */ "components/Authorize").then((function () {return resolve(__webpack_require__(/*! @/components/Authorize */ 1009));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var recommend = function recommend() {Promise.all(/*! require.ensure | components/recommend/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/recommend/index")]).then((function () {return resolve(__webpack_require__(/*! @/components/recommend */ 963));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { recommend: recommend, authorize: authorize }, data: function data() {return { reach_count: 0, VipList: [], // indicatorDots: false,
+var authorize = function authorize() {__webpack_require__.e(/*! require.ensure | components/Authorize */ "components/Authorize").then((function () {return resolve(__webpack_require__(/*! @/components/Authorize */ 1010));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var recommend = function recommend() {Promise.all(/*! require.ensure | components/recommend/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/recommend/index")]).then((function () {return resolve(__webpack_require__(/*! @/components/recommend */ 964));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { recommend: recommend, authorize: authorize }, data: function data() {return { reach_count: 0, VipList: [], // indicatorDots: false,
       // circular: true,
       // autoplay: false,
       // interval: 3000,

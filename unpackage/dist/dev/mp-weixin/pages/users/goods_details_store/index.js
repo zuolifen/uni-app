@@ -199,7 +199,7 @@ var _index = __webpack_require__(/*! @/utils/index */ 29);
 
 
 var _color = _interopRequireDefault(__webpack_require__(/*! @/mixins/color */ 33));
-var _vuex = __webpack_require__(/*! vuex */ 14);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Loading = function Loading() {__webpack_require__.e(/*! require.ensure | components/Loading/index */ "components/Loading/index").then((function () {return resolve(__webpack_require__(/*! @/components/Loading */ 977));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+var _vuex = __webpack_require__(/*! vuex */ 14);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Loading = function Loading() {__webpack_require__.e(/*! require.ensure | components/Loading/index */ "components/Loading/index").then((function () {return resolve(__webpack_require__(/*! @/components/Loading */ 978));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 
 
 var LONGITUDE = "user_longitude";

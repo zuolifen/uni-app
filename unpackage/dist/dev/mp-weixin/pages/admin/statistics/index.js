@@ -304,7 +304,7 @@ var _admin = __webpack_require__(/*! @/api/admin */ 244);function _interopRequir
 //
 //
 //
-var uniCalendar = function uniCalendar() {Promise.all(/*! require.ensure | components/uni-calendar/uni-calendar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-calendar/uni-calendar")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni-calendar/uni-calendar.vue */ 1213));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var canvaLineA = null; // import Calendar from 'mpvue-calendar'
+var uniCalendar = function uniCalendar() {Promise.all(/*! require.ensure | components/uni-calendar/uni-calendar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-calendar/uni-calendar")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni-calendar/uni-calendar.vue */ 1214));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var canvaLineA = null; // import Calendar from 'mpvue-calendar'
 // import 'mpvue-calendar/src/style.css
 // import Loading from "@components/Loading";
 var year = new Date().getFullYear();var month = new Date().getMonth() + 1;var day = new Date().getDate();var _default = { name: "Statistics", components: { // Calendar,

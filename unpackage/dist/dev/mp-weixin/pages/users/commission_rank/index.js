@@ -189,7 +189,7 @@ var _vuex = __webpack_require__(/*! vuex */ 14);
 
 
 
-var _color = _interopRequireDefault(__webpack_require__(/*! @/mixins/color */ 33));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var emptyPage = function emptyPage() {__webpack_require__.e(/*! require.ensure | components/emptyPage */ "components/emptyPage").then((function () {return resolve(__webpack_require__(/*! @/components/emptyPage.vue */ 1080));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var authorize = function authorize() {__webpack_require__.e(/*! require.ensure | components/Authorize */ "components/Authorize").then((function () {return resolve(__webpack_require__(/*! @/components/Authorize */ 1009));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _color = _interopRequireDefault(__webpack_require__(/*! @/mixins/color */ 33));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var emptyPage = function emptyPage() {__webpack_require__.e(/*! require.ensure | components/emptyPage */ "components/emptyPage").then((function () {return resolve(__webpack_require__(/*! @/components/emptyPage.vue */ 1081));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var authorize = function authorize() {__webpack_require__.e(/*! require.ensure | components/Authorize */ "components/Authorize").then((function () {return resolve(__webpack_require__(/*! @/components/Authorize */ 1010));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   components: {
 

@@ -55,8 +55,7 @@
 		name: 'swiperBg',
 		props: {
 			dataConfig: {
-				type: Object,
-				default: () => {}
+				type: Array,
 			},
 		},
 		watch: {
@@ -64,12 +63,11 @@
 				immediate: true,
 				handler(nVal, oVal) {
 					if (nVal) {
-						this.imgUrls = nVal.imgList ? nVal.imgList.list : [];
+						this.imgUrls = nVal;
 						this.isShow = nVal.isShow ? nVal.isShow.val : true
 						uni.getImageInfo({
 							src: this.imgUrls.length ? this.imgUrls[0].img : '',
 							success: (res) => {
-								console.log('2222222222')
 								if (res && res.height > 0) {
 									this.$set(this, 'imageH',
 										res.height / res

@@ -404,7 +404,7 @@ var _appUpdate = _interopRequireDefault(__webpack_require__(/*! @/components/upd
 //
 //
 //
-var authorize = function authorize() {__webpack_require__.e(/*! require.ensure | components/Authorize */ "components/Authorize").then((function () {return resolve(__webpack_require__(/*! @/components/Authorize */ 1009));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { authorize: authorize }, mixins: [_color.default], data: function data() {return { userInfo: {}, loginType: 'h5', //app.globalData.loginType
+var authorize = function authorize() {__webpack_require__.e(/*! require.ensure | components/Authorize */ "components/Authorize").then((function () {return resolve(__webpack_require__(/*! @/components/Authorize */ 1010));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { authorize: authorize }, mixins: [_color.default], data: function data() {return { userInfo: {}, loginType: 'h5', //app.globalData.loginType
       userIndex: 0, switchUserInfo: [], isAuto: false, //没有授权的不会自动授权
       isShowAuth: false, //是否隐藏授权
       canvasWidth: "", canvasHeight: "", canvasStatus: false, fileSizeString: '', version: '' };}, computed: (0, _vuex.mapGetters)(['isLogin']), watch: { isLogin: { handler: function handler(newV, oldV) {if (newV) {this.getUserInfo();}}, deep: true } }, onLoad: function onLoad() {if (this.isLogin) {this.getUserInfo();} else {(0, _login.toLogin)();}}, methods: { isNew: function isNew() {that.$util.Tips({ title: '当前为最新版本' });}, updateApp: function updateApp() {this.$refs.appUpdate.update(); //调用子组件 检查更新

@@ -149,7 +149,7 @@ var _vuex = __webpack_require__(/*! vuex */ 14);
 
 
 
-var _color = _interopRequireDefault(__webpack_require__(/*! @/mixins/color.js */ 33));var _this = void 0;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var splitOrder = function splitOrder() {__webpack_require__.e(/*! require.ensure | components/splitOrder/index */ "components/splitOrder/index").then((function () {return resolve(__webpack_require__(/*! @/components/splitOrder */ 1101));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _color = _interopRequireDefault(__webpack_require__(/*! @/mixins/color.js */ 33));var _this = void 0;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var splitOrder = function splitOrder() {__webpack_require__.e(/*! require.ensure | components/splitOrder/index */ "components/splitOrder/index").then((function () {return resolve(__webpack_require__(/*! @/components/splitOrder */ 1102));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   components: {
     splitOrder: splitOrder },

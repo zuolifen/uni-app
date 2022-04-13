@@ -236,7 +236,7 @@ var _color = _interopRequireDefault(__webpack_require__(/*! @/mixins/color */ 33
 //
 //
 //
-var authorize = function authorize() {__webpack_require__.e(/*! require.ensure | components/Authorize */ "components/Authorize").then((function () {return resolve(__webpack_require__(/*! @/components/Authorize */ 1009));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { authorize: authorize }, mixins: [_color.default], data: function data() {return { orderId: '', order_pay_info: { paid: 1, _status: {} }, isAuto: false, //没有授权的不会自动授权
+var authorize = function authorize() {__webpack_require__.e(/*! require.ensure | components/Authorize */ "components/Authorize").then((function () {return resolve(__webpack_require__(/*! @/components/Authorize */ 1010));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { authorize: authorize }, mixins: [_color.default], data: function data() {return { orderId: '', order_pay_info: { paid: 1, _status: {} }, isAuto: false, //没有授权的不会自动授权
       isShowAuth: false, //是否隐藏授权
       status: 0, msg: '', couponsHidden: true, couponList: [] };}, computed: (0, _vuex.mapGetters)(['isLogin']), watch: { isLogin: { handler: function handler(newV, oldV) {if (newV) {this.getOrderPayInfo();}}, deep: true } }, onLoad: function onLoad(options) {if (!options.order_id) return this.$util.Tips({ title: '缺少参数无法查看订单兑换状态' }, { tab: 3, url: 1 });this.orderId = options.order_id;this.status = options.status || 0;this.msg = options.msg || '';if (this.isLogin) {this.getOrderPayInfo();} else {(0, _login.toLogin)();
     }

@@ -167,7 +167,7 @@ var _user = __webpack_require__(/*! @/api/user.js */ 17); //
 //
 //
 //
-var home = function home() {Promise.all(/*! require.ensure | components/home/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/home/index")]).then((function () {return resolve(__webpack_require__(/*! @/components/home */ 956));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { home: home }, data: function data() {return { msgData: {} };}, onLoad: function onLoad(option) {this.getMsgDetails(option.id);}, methods: { getMsgDetails: function getMsgDetails(id) {var _this = this;uni.showLoading({
+var home = function home() {Promise.all(/*! require.ensure | components/home/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/home/index")]).then((function () {return resolve(__webpack_require__(/*! @/components/home */ 957));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { home: home }, data: function data() {return { msgData: {} };}, onLoad: function onLoad(option) {this.getMsgDetails(option.id);}, methods: { getMsgDetails: function getMsgDetails(id) {var _this = this;uni.showLoading({
         title: '获取详情中' });
 
       (0, _user.getMsgDetails)(id).then(function (res) {

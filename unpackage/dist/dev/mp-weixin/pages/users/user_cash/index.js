@@ -399,7 +399,7 @@ var _color = _interopRequireDefault(__webpack_require__(/*! @/mixins/color.js */
 //
 //
 //
-var authorize = function authorize() {__webpack_require__.e(/*! require.ensure | components/Authorize */ "components/Authorize").then((function () {return resolve(__webpack_require__(/*! @/components/Authorize */ 1009));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { authorize: authorize }, mixins: [_color.default], data: function data() {return { navList: [], currentTab: 0, index: 0, array: [], //提现银行
+var authorize = function authorize() {__webpack_require__.e(/*! require.ensure | components/Authorize */ "components/Authorize").then((function () {return resolve(__webpack_require__(/*! @/components/Authorize */ 1010));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { authorize: authorize }, mixins: [_color.default], data: function data() {return { navList: [], currentTab: 0, index: 0, array: [], //提现银行
       minPrice: 0.00, //最低提现金额
       userInfo: [], isClone: false, isAuto: false, //没有授权的不会自动授权
       isShowAuth: false, //是否隐藏授权
