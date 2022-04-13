@@ -32,30 +32,15 @@
 				@click.native="bindEdit('headerSerch', 'default')"></headerSerch>
 			<!-- 轮播 -->
 			<swiperBg :dataConfig="swiperBg" @click.native="bindEdit('swiperBg', 'default')"></swiperBg>
-			<!-- 金刚区 -->
-			<menus :dataConfig="menus.default" @click.native="bindEdit('menus', 'default')"></menus>
-			<!-- 新闻简报 -->
-			<news :dataConfig="news.default" @click.native="bindEdit('news', 'default')"></news>
-			<!-- 活动魔方 -->
-			<activity :dataConfig="activity.default" @click.native="bindEdit('activity', 'default')"></activity>
-			<!-- 		<seckill :dataConfig="seckill.default" @click.native="bindEdit('seckill','default')"></seckill>
-			<adsRecommend :dataConfig="adsRecommend.default" @click.native="bindEdit('adsRecommend','default')"></adsRecommend>
-			<combination :dataConfig="combination.default" @click.native="bindEdit('combination','default')"></combination>
-			<bargain :dataConfig="bargain.default" @click.native="bindEdit('bargain','default')"></bargain>
-			<picTxt :dataConfig="picTxt.default" @click.native="bindEdit('picTxt','default')"></picTxt>	 -->
+			
 			<alive :dataConfig="alive.default" @click.native="bindEdit('alive', 'default')"></alive>
-			<!-- 优惠券 -->
-			<coupon :dataConfig="coupon.default" @click.native="bindEdit('coupon', 'default')"></coupon>
-			<!-- 快速选择 -->
-			<scrollBox :dataConfig="scrollBox.default" @click.native="bindEdit('scrollBox', 'default')"></scrollBox>
+			
 			<!-- 促销精品 -->
 			<recommend :dataConfig="goodList.aa" @click.native="bindEdit('goodList', 'aa')"></recommend>
-			<!-- 排行榜 -->
-			<popular :dataConfig="goodList.bb" @click.native="bindEdit('goodList', 'bb')"></popular>
+		
 			<!-- 商品轮播 -->
 			<mBanner :dataConfig="swiperBg.aa" @click.native="bindEdit('swiperBg', 'aa')"></mBanner>
-			<!-- 首发新品 -->
-			<newGoods :dataConfig="goodList.cc" @click.native="bindEdit('goodList', 'cc')"></newGoods>
+			
 			<!-- 精品推荐 -->
 			<!-- <mBanner :dataConfig="swiperBg.cc" @click.native="bindEdit('swiperBg','cc')"></mBanner> -->
 
@@ -63,31 +48,10 @@
 			<!-- 商品轮播 -->
 
 			<!-- 		<customerService :dataConfig="customerService.default" @click.native="bindEdit('customerService','default')"></customerService> -->
-			<!-- 促销单品 -->
-			<promotion :dataConfig="goodList.dd" @click.native="bindEdit('goodList', 'dd')"></promotion>
-			<!-- 商品分类 -->
-			<tabNav class="sticky-box" :style="'top:' + isTop + 'px;'" :dataConfig="tabNav.default"
-				@click.native="bindEdit('tabNav', 'default')" @bindSortId="bindSortId" @bindHeight="bindHeighta">
-			</tabNav>
-			<!-- 商品列表 -->
-			<!-- 			<goodsWaterfall :class="{ nothing: loading }"
-				v-if="!isIframe && tabNav.default && tabNav.default.isShow.val" :dataLists="goodLists"
-				@click.native="bindEdit('List')"></goodsWaterfall> -->
-			<indexGoods v-if="!isIframe && tabNav.default && tabNav.default.isShow.val" :dataLists="goodLists"
-				@click.native="bindEdit('List')"></indexGoods>
-			<!-- <recommend :dataConfig="goodList.aa" @click.native="bindEdit('goodList','aa')"></recommend> -->
+		
+			
 			<Loading class="loading-sty" :loaded="loaded" :loading="loading"></Loading>
-			<view class="" v-if="
-          !isIframe &&
-          tabNav.default &&
-          tabNav.default.isShow.val &&
-          goodLists.length == 0 &&
-          !loading
-        ">
-				<view class="empty-box">
-					<image src="/static/images/noShopper.png"></image>
-				</view>
-			</view>
+		
 		</view>
 
 		<tabBar :dataConfig="tabBar.default" :pagePath="'/pages/index/index'"
@@ -123,10 +87,6 @@
 	import indexGoods from "@/components/indexGoods/index";
 	import headerSerch from "./components/headerSerch";
 	import swiperBg from "./components/swiperBg";
-	import menus from "./components/menus";
-	import news from "./components/news";
-	import activity from "./components/activity";
-	import scrollBox from "./components/scrollBox";
 	import recommend from "./components/recommend";
 	import popular from "./components/popular";
 	import mBanner from "./components/mBanner";
@@ -134,7 +94,6 @@
 	import promotion from "./components/promotion";
 	import alive from "./components/alive";
 	import adsRecommend from "./components/adsRecommend";
-	import coupon from "./components/coupon";
 	import seckill from "./components/seckill";
 	import combination from "./components/combination";
 	import bargain from "./components/bargain";
@@ -170,7 +129,7 @@
 		getCouponNewUser,
 	} from "@/api/api.js";
 	import {
-		getBannerList
+		getBannerList,getLvproducts
 	} from "@/api/traveApi.js";
 	import {
 		getGroomList,
@@ -196,10 +155,6 @@
 			couponWindow,
 			headerSerch,
 			swiperBg,
-			menus,
-			news,
-			activity,
-			scrollBox,
 			recommend,
 			popular,
 			mBanner,
@@ -207,7 +162,6 @@
 			promotion,
 			alive,
 			adsRecommend,
-			coupon,
 			seckill,
 			combination,
 			bargain,
@@ -260,11 +214,7 @@
 				isIframe: app.globalData.isIframe,
 				headerSerch: {}, //头部搜索
 				swiperBg: {}, //轮播
-				menus: {}, //导航
-				news: {}, //消息公告
-				activity: {}, //活动魔方
 				alive: {},
-				scrollBox: {}, //快速选择分类
 				titles: {}, //标题
 				goodList: {}, //商品列表(商品列表、首发新品、热门榜单、促销单品、精品推荐)
 				tabBar: {}, //导航
@@ -274,7 +224,6 @@
 				combination: {}, //拼团
 				adsRecommend: {}, //广告位
 				seckill: {}, //秒杀
-				coupon: {}, //优惠券
 				tabNav: {}, //分类tab
 				isBorader: "",
 				domOffsetTop: 50,
@@ -321,6 +270,7 @@
 			// #endif
 			this.diyData();
 			this.getBannerList();
+			this.getLvproducts();
 			this.getIndexData();
 			// #ifdef MP
 			if (this.$Cache.get(TIPS_KEY)) this.iShidden = true;
@@ -511,15 +461,10 @@
 				getDiy().then((res) => {
 					let data = res.data;
 					that.headerSerch = data.headerSerch;
-					
-					that.menus = data.menus;
-					that.news = data.news;
-					that.activity = data.activity;
 					that.alive = data.alive;
-					that.scrollBox = data.scrollBox;
 					that.titles = data.titles;
-					that.goodList = data.goodList;
 					that.tabNav = data.tabNav;
+					that.goodList = data.goodList;
 					that.tabBar = data.tabBar;
 					that.customerService = data.customerService;
 					that.picTxt = data.picTxt;
@@ -527,7 +472,6 @@
 					that.combination = data.combination;
 					that.adsRecommend = data.adsRecommend;
 					that.seckill = data.seckill;
-					that.coupon = data.coupon;
 					this.$Cache.set("TAB_BAR", data.tabBar.default.tabBarList);
 					setTimeout(() => {
 						this.showSkeleton = false;
@@ -539,6 +483,14 @@
 				let that = this;
 				getBannerList().then((res)=>{
 					that.swiperBg = res.data;
+				})
+			},
+			// 获取首页列表
+			getLvproducts(){
+				let that = this;
+				getLvproducts().then((res)=>{
+					// that.goodList = res.data;
+					console.log(res.data)
 				})
 			},
 			getIndexData() {

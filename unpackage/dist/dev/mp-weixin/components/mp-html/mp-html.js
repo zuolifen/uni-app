@@ -152,7 +152,7 @@ __webpack_require__.r(__webpack_exports__);
  * @event {Function} error 媒体加载出错时触发
  */
 var plugins = [];
-var parser = __webpack_require__(/*! ./parser */ 1007);var node = function node() {__webpack_require__.e(/*! require.ensure | components/mp-html/node/node */ "components/mp-html/node/node").then((function () {return resolve(__webpack_require__(/*! ./node/node */ 1582));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var parser = __webpack_require__(/*! ./parser */ 1007);var node = function node() {__webpack_require__.e(/*! require.ensure | components/mp-html/node/node */ "components/mp-html/node/node").then((function () {return resolve(__webpack_require__(/*! ./node/node */ 1505));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
