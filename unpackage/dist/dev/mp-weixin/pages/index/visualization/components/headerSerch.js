@@ -155,15 +155,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
-
 var _order = __webpack_require__(/*! @/libs/order.js */ 85); //
 //
 //
@@ -201,17 +192,17 @@ var _order = __webpack_require__(/*! @/libs/order.js */ 85); //
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var app = getApp();var statusBarHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 'rpx';var headHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 170 + 'rpx';var _default2 = { name: 'headerSerch', props: { dataConfig: { type: Object, default: function _default() {} } }, data: function data() {return { logoConfig: '', hotWords: [], sysHeight: statusBarHeight, headH: headHeight, name: this.$options.name, isShow: true, isIframe: app.globalData.isIframe, titleInfo: [] };}, watch: { dataConfig: { immediate: true, handler: function handler(nVal, oVal) {if (nVal) {this.logoConfig = nVal ? nVal.imgUrl.url : '';this.hotWords = nVal.hotList.list || [];this.isShow = nVal.isShow.val;this.titleInfo = nVal.titleInfo && nVal.titleInfo.list.length ? nVal.titleInfo.list : [];uni.setStorageSync('hotList', this.hotWords || []);}} } }, mounted: function mounted() {var that = this;this.$nextTick(function () {// 获取小程序头部高度
-      var info = uni.createSelectorQuery().in(this).select(".mp-header");info.boundingClientRect(function (data) {that.marTop = data.height;}).exec();});
+var app = getApp();var statusBarHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 'rpx';var headHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 170 + 'rpx';var _default2 = { name: 'headerSerch', props: { dataConfig: { type: Object, default: function _default() {} } }, data: function data() {return { logoConfig: '', hotWords: [], sysHeight: statusBarHeight, headH: headHeight, name: this.$options.name, isShow: true, isIframe: app.globalData.isIframe, titleInfo: [] };}, watch: { dataConfig: { immediate: true, handler: function handler(nVal, oVal) {if (nVal) {this.logoConfig = nVal ? nVal.imgUrl.url : '';this.hotWords = nVal.hotList.list || [];this.isShow = nVal.isShow.val;this.titleInfo = nVal.titleInfo && nVal.titleInfo.list.length ? nVal.titleInfo.list : [];uni.setStorageSync('hotList', this.hotWords || []);}} } }, mounted: function mounted() {
+    var that = this;
+
+    this.$nextTick(function () {
+      // 获取小程序头部高度
+      var info = uni.createSelectorQuery().in(this).select(".mp-header");
+      info.boundingClientRect(function (data) {
+        that.marTop = data.height;
+      }).exec();
+    });
+
   },
   methods: {
     goPage: function goPage() {

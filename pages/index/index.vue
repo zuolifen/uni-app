@@ -58,6 +58,7 @@
 				});
 			},
 		},
+		
 		// #ifdef MP
 		//发送给朋友
 		onShareAppMessage(res) {

@@ -275,12 +275,12 @@ var orange =
                     uni.$emit('ok', blue, res.data.status);
                     break;
                   case 2:
-                    uni.setStorageSync('viewColor', green);
-                    uni.$emit('ok', green, res.data.status);
-                    break;
-                  case 3:
                     uni.setStorageSync('viewColor', red);
                     uni.$emit('ok', red, res.data.status);
+                    break;
+                  case 3:
+                    uni.setStorageSync('viewColor', green);
+                    uni.$emit('ok', green, res.data.status);
                     break;
                   case 4:
                     uni.setStorageSync('viewColor', pink);
@@ -291,8 +291,8 @@ var orange =
                     uni.$emit('ok', orange, res.data.status);
                     break;
                   default:
-                    uni.setStorageSync('viewColor', red);
-                    uni.$emit('ok', red, res.data.status);
+                    uni.setStorageSync('viewColor', green);
+                    uni.$emit('ok', green, res.data.status);
                     break;}
 
               });
