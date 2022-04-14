@@ -55,6 +55,9 @@
   border-radius: 10rpx;
   display: flex;
 }
+.productList .item .clock-in {
+  display: flex;
+}
 .productList .item .pictrue {
   position: relative;
   width: 180rpx;
@@ -79,25 +82,12 @@
   justify-content: space-between;
 }
 .productList .item .text .name {
-  font-size: 28rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
 }
 .productList .item .text .type {
   display: flex;
-}
-.productList .item .text .type .type-sty {
-  padding: 0 5rpx;
-  border: 1px solid var(--view-theme);
-  color: var(--view-theme);
-  font-size: 24rpx;
-  border-radius: 4rpx;
-}
-.productList .item .text .money {
-  font-size: 26rpx;
-  font-weight: bold;
-}
-.productList .item .text .money .num {
-  font-size: 34rpx;
-  color: var(--view-priceColor);
 }
 .productList .item .text .vip {
   font-size: 22rpx;
@@ -105,16 +95,6 @@
   margin-top: 7rpx;
   display: flex;
   align-items: center;
-}
-.productList .item .text .vip .vip-money {
-  font-size: 24rpx;
-  color: #282828;
-  font-weight: bold;
-}
-.productList .item .text .vip .vip-money image {
-  width: 46rpx;
-  height: 21rpx;
-  margin-left: 4rpx;
 }
 .empty-img {
   width: 690rpx;

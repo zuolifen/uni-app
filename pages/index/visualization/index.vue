@@ -488,7 +488,11 @@
 			// 获取首页列表
 			getLvproducts(){
 				let that = this;
-				getLvproducts().then((res)=>{
+				let data ={
+					page:1,
+					limit:10
+				}
+				getLvproducts(data).then((res)=>{
 					// that.goodList = res.data;
 					console.log(res.data)
 				})
