@@ -10,6 +10,7 @@
 
 # production
 /build
+/unpackage
 /unpackage/dist
 # misc
 .DS_Store
