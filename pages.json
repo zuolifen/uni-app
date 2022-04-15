@@ -47,6 +47,17 @@
 				// #endif
 			}
 		},
+		{
+			"path": "pages/lvyouclock/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},
 		// {
 		// 	"path": "pages/goods_cate/goods_cate",
 		// 	"style": {
@@ -75,7 +86,8 @@
 				"navigationBarTitleText": "找回密码"
 			}
 		}
-	],
+	    
+    ],
 	"subPackages": [{
 			"root": "pages/news_list",
 			"name": "news_list",
@@ -108,23 +120,7 @@
 					}
 				}
 			}]
-		}, {
-			"root": "pages/goods_search",
-			"name": "goods_search",
-			"pages": [{
-				"path": "index",
-				"style": {
-					"navigationBarTitleText": "搜索商品",
-					"app-plus": {
-						// #ifdef APP-PLUS
-						"titleNView": {
-							"type": "default"
-						}
-						// #endif
-					}
-				}
-			}]
-		}, {
+		},  {
 			"root": "pages/customer_list",
 			"name": "customer_list",
 			"pages": [{
@@ -208,7 +204,8 @@
 					"navigationBarTitleText": "精彩内容"
 				}
 			}]
-		}, {
+		}, 
+		{
 			"root": "pages/users",
 			"name": "users",
 			"pages": [{
@@ -975,6 +972,7 @@
 				}
 			}]
 		},
+		
 		{
 			"root": "pages/activity",
 			"name": "activity",

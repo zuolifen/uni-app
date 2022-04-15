@@ -36,7 +36,7 @@
 			<alive :dataConfig="alive.default" @click.native="bindEdit('alive', 'default')"></alive>
 			
 			<!-- 促销精品 -->
-			<recommend :dataConfig="goodList.aa" @click.native="bindEdit('goodList', 'aa')"></recommend>
+			<recommend :dataConfig="goodList" @click.native="bindEdit('goodList', 'aa')"></recommend>
 		
 			<!-- 商品轮播 -->
 			<mBanner :dataConfig="swiperBg.aa" @click.native="bindEdit('swiperBg', 'aa')"></mBanner>
@@ -464,7 +464,6 @@
 					that.alive = data.alive;
 					that.titles = data.titles;
 					that.tabNav = data.tabNav;
-					that.goodList = data.goodList;
 					that.tabBar = data.tabBar;
 					that.customerService = data.customerService;
 					that.picTxt = data.picTxt;
@@ -493,8 +492,7 @@
 					limit:10
 				}
 				getLvproducts(data).then((res)=>{
-					// that.goodList = res.data;
-					console.log(res.data)
+					that.goodList = res.data;
 				})
 			},
 			getIndexData() {

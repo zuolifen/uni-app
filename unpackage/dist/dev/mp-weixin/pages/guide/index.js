@@ -139,7 +139,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _cache = _interopRequireDefault(__webpack_require__(/*! @/utils/cache */ 21));
-var _api = __webpack_require__(/*! @/api/api.js */ 30);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var guide = function guide() {__webpack_require__.e(/*! require.ensure | components/guide/index */ "components/guide/index").then((function () {return resolve(__webpack_require__(/*! @/components/guide/index.vue */ 928));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _api = __webpack_require__(/*! @/api/api.js */ 30);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var guide = function guide() {__webpack_require__.e(/*! require.ensure | components/guide/index */ "components/guide/index").then((function () {return resolve(__webpack_require__(/*! @/components/guide/index.vue */ 935));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 {

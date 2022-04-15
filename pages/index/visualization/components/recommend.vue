@@ -16,22 +16,22 @@
 					</view>
 				</view>
 				<view class="item-box">
-					<view class='item' v-for="(item,index) in bastList" :key="index" @click="goDetail(item)">
-						<view class='pictrue'>
+					<view class='item' v-for="(item,index) in bastList" :key="index">
+						<view class='pictrue'  @click="goDetail(item.id)">
 							<image :src='item.image'></image>
 						</view>
 						<view>
-							<view class='text'>
-								<view class='name line1'>{{item.store_name}}</view>
-								<view class='describe'>景点描述 </view>
+							<view class='text'  @click="goDetail(item.id)">
+								<view class='name line1'>{{item.lvyou_name}}</view>
+								<view class='describe'>{{item.lvyou_info}} </view>
 							</view>
 							<view class="clock-in">
 								<view>
 									<text>打卡人数:</text>
-									<text class="clock-number">99</text>
+									<text class="clock-number">{{item.clock_people}}</text>
 								</view>
-								<view>
-									立即打卡
+								<view @click="handleLvyouclock(item.id)">
+									{{item.is_clock?"已打卡":"立即打卡"}}
 								</view>
 							</view>
 						</view>
@@ -39,7 +39,7 @@
 				</view>
 
 			</view>
-			<block v-if="isIframe && !bastList.length">
+			<!-- <block v-if="isIframe && !bastList.length">
 				<view class='index-wrapper' v-if="isIframe && !fastList.length">
 					<view class='title acea-row row-between-wrapper'>
 						<view class='text'>
@@ -56,12 +56,13 @@
 						<view class="empty-img">精品推荐，暂无数据</view>
 					</view>
 				</view>
-			</block>
+			</block> -->
 		</view>
 	</view>
 </template>
 
 <script>
+	
 	let app = getApp()
 	import {
 		mapState
@@ -73,14 +74,16 @@
 	import {
 		getHomeProducts
 	} from '@/api/store.js';
+	import {
+		handleLvyouclock,getLvyouDetail
+	} from "@/api/traveApi.js";
 	import goodLists from '@/components/goodList/index.vue'
 	import colors from "@/mixins/color";
 	export default {
 		name: 'goodList',
 		props: {
 			dataConfig: {
-				type: Object,
-				default: () => {}
+				type: Array,
 			}
 		},
 		mixins: [colors],
@@ -90,45 +93,21 @@
 		created() {
 
 		},
-		mounted() {},
+		mounted() {
+		},
 		watch: {
 			dataConfig: {
 				immediate: true,
 				handler(nVal, oVal) {
 					if (nVal) {
-						this.isShow = nVal.isShow.val;
-						this.selectType = nVal.tabConfig.tabVal;
-						this.$set(this, 'selectId', nVal.selectConfig.activeValue || '');
-						this.$set(this, 'type', nVal.selectSortConfig.activeValue);
-						this.salesOrder = nVal.goodsSort.type == 1 ? 'desc' : '';
-						this.newsOrder = nVal.goodsSort.type == 2 ? 'news' : '';
-						this.ids = nVal.ids ? nVal.ids.join(',') : '';
-						this.numConfig = nVal.numConfig.val;
-						this.titleInfo = nVal.titleInfo.list;
-						this.productslist();
+						this.bastList = nVal;
 					}
 				}
 			}
 		},
 		data() {
 			return {
-				circular: true,
-				interval: 3000,
-				duration: 500,
 				bastList: [],
-				name: this.$options.name,
-				isShow: true,
-				isIframe: app.globalData.isIframe,
-				selectType: 0,
-				selectId: '',
-				salesOrder: '',
-				newsOrder: '',
-				ids: '',
-				page: 1,
-				limit: this.$config.LIMIT,
-				type: '',
-				numConfig: 0,
-				titleInfo: []
 			}
 		},
 		methods: {
@@ -168,14 +147,25 @@
 					url: url
 				})
 			},
-			goDetail(item) {
-				goPage().then(res => {
-					goShopDetail(item, this.uid).then(res => {
+			handleLvyouclock(id){
+				
+				handleLvyouclock(id).then(res=>{
+					if(res.status === 200){
 						uni.navigateTo({
-							url: `/pages/goods_details/index?id=${item.id}`
+							url: `/pages/lvyouclock/index`
+						})
+					}
+					
+				})
+			},
+			goDetail(id) {
+				
+					getLvyouDetail(id).then(res => {
+						uni.navigateTo({
+							url: `/pages/goods_details/index?id=${id}`
 						})
 					})
-				})
+				
 			}
 		}
 	}
