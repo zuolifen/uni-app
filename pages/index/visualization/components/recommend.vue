@@ -20,17 +20,17 @@
 						<view class='pictrue'  @click="goDetail(item.id)">
 							<image :src='item.image'></image>
 						</view>
-						<view>
+						<view class="right-info">
 							<view class='text'  @click="goDetail(item.id)">
 								<view class='name line1'>{{item.lvyou_name}}</view>
 								<view class='describe'>{{item.lvyou_info}} </view>
 							</view>
 							<view class="clock-in">
-								<view>
+								<view class="clock-color">
 									<text>打卡人数:</text>
-									<text class="clock-number">{{item.clock_people}}</text>
+									<text ><text class="clock-number">{{item.clock_people}}</text>人</text>
 								</view>
-								<view @click="handleLvyouclock(item.id)">
+								<view class="clock-state" @click="handleLvyouclock(item.id)">
 									{{item.is_clock?"已打卡":"立即打卡"}}
 								</view>
 							</view>
@@ -209,9 +209,35 @@
 		border-radius: 10rpx;
 		display: flex;
 		// border:1rpx solid #eee;
-		.clock-in{
+		.right-info{
 			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			.clock-in{
+				display: flex;
+				padding: 0rpx 17rpx 0rpx 17rpx;
+				justify-content: space-between;
+				.clock-color{
+					color: #EC1515 ;
+					.clock-number{
+						font-size: 40rpx;
+					}
+				}
+				.clock-state{
+					width: 140rpx;
+					height: 70rpx;
+					background-image: url(../static/images/clock.png);
+					background-size: 100% 100%;
+					background-repeat: no-repeat;
+					color: #fff;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+				
+			}
 		}
+		
 	}
 
 	.productList .item .pictrue {
@@ -244,6 +270,7 @@
 			font-size: 32rpx;
 			font-weight: 600;
 			color: #333;
+			margin-bottom: 20rpx;
 		}
 
 		.type {

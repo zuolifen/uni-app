@@ -1,10 +1,11 @@
 <template>
 	<view class="swiperBg" :style="{marginTop:mt +'rpx'}">
-		<view class="bag" v-if="isIframe || (imgUrls.length && isShow)">
+		<view class="bag">
+			<image class="img" src="../static/images/swiperbg.png" mode=""></image>
 		</view>
 		<block v-if="isShow && imgUrls.length">
 			<view class="swiper square" v-if="imgUrls.length">
-				<swiper class="skeleton-rect" :style="'height:'+ (imageH) +'rpx;'" indicator-dots="true"
+				<swiper class="skeleton-rect" :style="'height:'+ (imageH-80) +'rpx;'" indicator-dots="true"
 					:autoplay="true" :circular="circular" :interval="interval" :duration="duration"
 					indicator-color="rgba(255,255,255,0.6)" indicator-active-color="#fff" :current="swiperCur"
 					@change="swiperChange">
@@ -12,7 +13,7 @@
 						<swiper-item class="" :class="{active:index == swiperCur}">
 							<view @click="goDetail(item)" class='slide-navigator acea-row row-between-wrapper'>
 								<image :src="item.img" class="slide-image" mode="widthFix"
-									:style="'height:'+ (imageH) +'rpx;'">
+									:style="'height:'+ (imageH-80) +'rpx;'">
 								</image>
 							</view>
 						</swiper-item>
@@ -22,15 +23,15 @@
 			</view>
 		</block>
 		<block v-if="!isShow && isIframe && imgUrls.length && imageH">
-			<view class="swiper square" v-if="imgUrls.length && imageH" :style="'height:'+ (imageH) +'rpx;'">
-				<swiper :style="'height:'+ (imageH) +'rpx;'" indicator-dots="true" :autoplay="true" :circular="circular"
+			<view class="swiper square" v-if="imgUrls.length && imageH" :style="'height:'+ (imageH-80) +'rpx;'">
+				<swiper :style="'height:'+ (imageH-80) +'rpx;'" indicator-dots="true" :autoplay="true" :circular="circular"
 					:interval="interval" :duration="duration" indicator-color="rgba(255,255,255,0.6)"
 					indicator-active-color="#fff">
 					<block v-for="(item,index) in imgUrls" :key="index">
 						<swiper-item>
 							<view @click="goDetail(item)" class='slide-navigator acea-row row-between-wrapper'>
 								<image :src="item.img" class="slide-image" mode="widthFix"
-									:style="'height:'+ (imageH) +'rpx;'">
+									:style="'height:'+ (imageH-80) +'rpx;'">
 								</image>
 							</view>
 						</swiper-item>
@@ -73,11 +74,11 @@
 										res.height / res
 										.width * 690)
 								} else {
-									this.$set(this, 'imageH', 320);
+									this.$set(this, 'imageH', 280);
 								}
 							},
 							fail: (error) => {
-								this.$set(this, 'imageH', 320);
+								this.$set(this, 'imageH', 280);
 							}
 						})
 					}
@@ -99,7 +100,7 @@
 				isIframe: false,
 				mt: -55,
 				isShow: true,
-				imageH: 320,
+				imageH: 280,
 				swiperCur: 0,
 			};
 		},
@@ -109,9 +110,9 @@
 			const system = res.platform
 			this.statusBarHeight = res.statusBarHeight
 			if (system === 'android') {
-				this.mt = parseFloat(statusBarHeight) * 2 + 170
+				this.mt = parseFloat(statusBarHeight) * 2 + 110
 			} else {
-				this.mt = parseFloat(statusBarHeight) * 2 + 168
+				this.mt = parseFloat(statusBarHeight) * 2 + 108
 			}
 
 			// #endif
@@ -182,10 +183,15 @@
 			position: absolute;
 			top: 0;
 			width: 100%;
-			height: 140rpx;
-			background: linear-gradient(90deg, var(--view-main-start) 0%, var(--view-main-over) 100%);
-			border-bottom-left-radius: 40rpx;
-			border-bottom-right-radius: 40rpx;
+			height: 250rpx;
+			// background-image: url(../static/images/swiperbg.png);
+			// border-bottom-left-radius: 40rpx;
+			// border-bottom-right-radius: 40rpx;
+			.img{
+				width: 100%;
+				height: 100%;
+			}
+			
 		}
 
 		/* #ifdef APP-PLUS */

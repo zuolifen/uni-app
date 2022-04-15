@@ -1,44 +1,25 @@
 <template>
-	<!-- #ifdef H5 -->
-	<view v-if="isShow" class="header">
-		<view class="serch-wrapper row-middle">
-			<view class="logo">
-				<view>中诚旅游</view>
-			</view>
-			
-		</view>
-	</view>
-	<view v-else-if="isIframe" class="header">
-		<view class="serch-wrapper acea-row row-middle">
-			<view class="logo">
-				
-				<view>中诚旅游</view>
-			</view>
-			
-		</view>
-	</view>
+	
 	<!-- #endif -->
 	<!-- #ifdef MP  || APP-PLUS -->
-	<view v-if="isShow">
 		<view class="mp-header skeleton-rect" :style="{height:headH}">
 			<view class="sys-head" :style="{height:sysHeight}"></view>
 			<view class="serch-box" style="height: 48px;">
 				<view class="serch-wrapper row-middle">
 					<view class="logo">
-						<view>中诚旅游</view>
+						<view>{{dataConfig}}</view>
 					</view>
 					
 				</view>
 			</view>
 		</view>
-	</view>
 	<!-- #endif -->
 </template>
 
 <script>
 	let app = getApp();
 	let statusBarHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 'rpx';
-	let headHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 170 + 'rpx';
+	let headHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 110 + 'rpx';
 	import {
 		goPage
 	} from '@/libs/order.js'
@@ -46,8 +27,7 @@
 		name: 'headerSerch',
 		props: {
 			dataConfig: {
-				type: Object,
-				default: () => {}
+				type: String
 			}
 		},
 		data() {
@@ -101,70 +81,7 @@
 </script>
 
 <style lang="scss">
-	/* #ifdef H5 */
-	.header {
-		width: 100%;
-		height: 210rpx;
-		background: #fff;
-		background: linear-gradient(90deg, var(--view-main-start) 0%, var(--view-main-over) 100%);
-		border-bottom-left-radius: 60rpx;
-		border-bottom-right-radius: 60rpx;
-
-		.serch-wrapper {
-			padding: 20rpx 30rpx 0 30rpx;
-
-			.logo {
-				margin-right: 30rpx;
-				display: flex;
-				align-items: flex-end;
-
-				image {
-					width: 144rpx;
-					height: 50rpx;
-				}
-
-				.swiger {
-					color: #fff;
-					font-size: 24rpx;
-					margin-left: 20rpx;
-					margin-bottom: -2rpx;
-				}
-			}
-
-			.input {
-				display: flex;
-				height: 60rpx;
-				padding: 0 0 0 30rpx;
-				background: rgba(247, 247, 247, 1);
-				border: 1px solid rgba(241, 241, 241, 1);
-				color: #999;
-				font-size: 28rpx;
-				flex: 1;
-				z-index: 99;
-				margin: 14rpx 0;
-
-				.iconfont {
-					margin-right: 20rpx;
-					color: #555555;
-				}
-
-				// 没有logo，直接搜索框
-				&.on {
-					width: 100%;
-				}
-
-				// 设置圆角
-				&.fillet {
-					border-radius: 40rpx;
-				}
-
-				// 文本框文字居中
-				&.row-center {
-					padding: 0;
-				}
-			}
-		}
-	}
+	
 
 	/* #endif */
 	/* #ifdef MP || APP-PLUS */
@@ -173,7 +90,7 @@
 		left: 0;
 		top: 0;
 		width: 100%;
-		background: linear-gradient(90deg, var(--view-main-start) 0%, var(--view-main-over) 100%);
+		background-image: url(../static/images/header.png);
 		z-index: 999;
 
 		// height: 250rpx;

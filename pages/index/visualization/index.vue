@@ -28,8 +28,7 @@
 		<!-- #endif -->
 		<!-- 顶部搜索 -->
 		<view class="skeleton" id="pageIndexs" :style="{ visibility: showSkeleton ? 'hidden' : 'visible' }">
-			<headerSerch class="mp-header skeleton" :dataConfig="headerSerch.default"
-				@click.native="bindEdit('headerSerch', 'default')"></headerSerch>
+			<headerSerch class="mp-header skeleton" :dataConfig="headerText"></headerSerch>
 			<!-- 轮播 -->
 			<swiperBg :dataConfig="swiperBg" @click.native="bindEdit('swiperBg', 'default')"></swiperBg>
 			
@@ -230,6 +229,7 @@
 				isTop: 0,
 				privacyStatus: false, // 隐私政策是否同意过
 				isFixed: false,
+				headerText:"中诚旅游"
 			};
 		},
 		created() {
