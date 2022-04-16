@@ -16,7 +16,7 @@ export function getLvproducts(data) {
 }
 
 // 打卡操作
-export function handleLvyouclock(id) {
+export function getLvyouclock(id) {
 	return request.get("lvyou_clock?id="+id,{}, {
 		noAuth: true
 	});

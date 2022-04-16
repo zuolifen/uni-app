@@ -1,6 +1,10 @@
 <template>
 	<view class="lvyouclock">
-			<view @click="back">打卡成功</view>
+			<view class="lvyouclock-header">
+				<view @click="back">
+					<image></image>
+				</view>
+			</view>
 			<view class="">
 				打卡成功
 			</view>
@@ -16,9 +20,11 @@
 
 <script>
 	export default {
+		comments:{
+		},
 		data() {
 			return {
-				
+				headerText:"打卡成功"
 			}
 		},
 		methods: {
@@ -29,8 +35,16 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.lvyouclock{
-		margin-top: 30px;
+		.lvyouclock-header{
+			height: 127rpx;
+			width: 100%;
+			background-image: url(../../static/images/clock/clockHeader.png);
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			position: relative;
+		}
+		
 	}
 </style>

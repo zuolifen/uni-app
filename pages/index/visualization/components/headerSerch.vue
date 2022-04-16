@@ -83,8 +83,6 @@
 <style lang="scss">
 	
 
-	/* #endif */
-	/* #ifdef MP || APP-PLUS */
 	.mp-header {
 		position: fixed;
 		left: 0;

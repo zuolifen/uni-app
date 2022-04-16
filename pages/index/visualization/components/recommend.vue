@@ -75,7 +75,7 @@
 		getHomeProducts
 	} from '@/api/store.js';
 	import {
-		handleLvyouclock,getLvyouDetail
+		getLvyouclock,getLvyouDetail
 	} from "@/api/traveApi.js";
 	import goodLists from '@/components/goodList/index.vue'
 	import colors from "@/mixins/color";
@@ -148,8 +148,9 @@
 				})
 			},
 			handleLvyouclock(id){
-				
-				handleLvyouclock(id).then(res=>{
+				console.log("打卡")
+				getLvyouclock(id).then(res=>{
+					
 					if(res.status === 200){
 						uni.navigateTo({
 							url: `/pages/lvyouclock/index`

@@ -21,7 +21,6 @@
 		},
 			
 		onLoad(options){
-			console.log(options)
 			let id=options.id;
 		}
 	}
