@@ -1,25 +1,18 @@
 <template>
 	
-	<!-- #endif -->
-	<!-- #ifdef MP  || APP-PLUS -->
-		<view class="mp-header skeleton-rect" :style="{height:headH}">
-			<view class="sys-head" :style="{height:sysHeight}"></view>
-			<view class="serch-box" style="height: 48px;">
+		<view class="mp-header skeleton-rect" >
 				<view class="serch-wrapper row-middle">
 					<view class="logo">
 						<view>{{dataConfig}}</view>
 					</view>
 					
 				</view>
-			</view>
 		</view>
-	<!-- #endif -->
 </template>
 
 <script>
 	let app = getApp();
-	let statusBarHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 'rpx';
-	let headHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 110 + 'rpx';
+	
 	import {
 		goPage
 	} from '@/libs/order.js'
@@ -32,51 +25,19 @@
 		},
 		data() {
 			return {
-				logoConfig: '',
-				hotWords: [],
-				sysHeight: statusBarHeight,
-				headH: headHeight,
-				name: this.$options.name,
-				isShow: true,
-				isIframe: app.globalData.isIframe,
-				titleInfo: []
+				
 			};
 		},
-		watch: {
-			dataConfig: {
-				immediate: true,
-				handler(nVal, oVal) {
-					if (nVal) {
-						this.logoConfig = nVal ? nVal.imgUrl.url : '';
-						this.hotWords = nVal.hotList.list || []
-						this.isShow = nVal.isShow.val
-						this.titleInfo = nVal.titleInfo && nVal.titleInfo.list.length ? nVal.titleInfo.list : [];
-						uni.setStorageSync('hotList', this.hotWords || []);
-					}
-				}
-			}
-		},
-		mounted() {
-			let that = this;
-			// #ifdef MP
-			this.$nextTick(function() {
-				// 获取小程序头部高度
-				let info = uni.createSelectorQuery().in(this).select(".mp-header");
-				info.boundingClientRect(function(data) {
-					that.marTop = data.height
-				}).exec()
-			})
-			// #endif
-		},
-		methods: {
-			goPage() {
-				goPage().then(res => {
-					uni.navigateTo({
-						url: '/pages/goods_search/index'
-					})
-				})
-			}
-		}
+		
+		// methods: {
+		// 	goPage() {
+		// 		goPage().then(res => {
+		// 			uni.navigateTo({
+		// 				url: '/pages/goods_search/index'
+		// 			})
+		// 		})
+		// 	}
+		// }
 	}
 </script>
 
@@ -88,13 +49,9 @@
 		left: 0;
 		top: 0;
 		width: 100%;
+		height: 150rpx;
 		background-image: url(../static/images/header.png);
 		z-index: 999;
-
-		// height: 250rpx;
-		.serch-box {
-			padding-bottom: 10rpx;
-		}
 
 		.serch-wrapper {
 			height: 100%;
@@ -118,40 +75,7 @@
 				}
 			}
 
-			.input {
-				height: 60rpx;
-				padding: 0 0 0 30rpx;
-				background: rgba(247, 247, 247, 1);
-				border: 1px solid rgba(241, 241, 241, 1);
-				color: #999;
-				font-size: 28rpx;
-				// margin: 14rpx 0;
-				margin-top: 20rpx;
-				margin-bottom: 20rpx;
-				flex: 1;
-
-				.iconfont {
-					margin-right: 20rpx;
-					color: #555555;
-				}
-
-				// 没有logo，直接搜索框
-				&.on {
-					width: 70%;
-				}
-
-				// 设置圆角
-				&.fillet {
-					border-radius: 40rpx;
-				}
-
-				// 文本框文字居中
-				&.row-center {
-					padding: 0;
-				}
-			}
 		}
 	}
 
-	/* #endif */
 </style>
