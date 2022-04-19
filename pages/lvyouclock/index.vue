@@ -1,30 +1,23 @@
 <template>
 	<view class="lvyouclock">
-			<view class="lvyouclock-header">
-				<view @click="back">
-					<image></image>
-				</view>
-			</view>
-			<view class="">
-				打卡成功
-			</view>
-			<view class="">
-				查看我的打卡
-				
-			</view>
-			<view class="" >
-				返回首页
-			</view>
+			<lvClockExchange :headerText="headerText"></lvClockExchange>
 	</view>
 </template>
 
 <script>
+	
+	import lvClockExchange from '@/components/lvClockExchange';
+	let statusBarHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 'rpx';
+	let headHeight = uni.getSystemInfoSync().statusBarHeight * 2 + 110 + 'rpx';
 	export default {
 		comments:{
+			lvClockExchange
 		},
 		data() {
 			return {
-				headerText:"打卡成功"
+				headerText:"打卡成功",
+				sysHeight: statusBarHeight,
+				headH: headHeight,
 			}
 		},
 		methods: {
@@ -36,15 +29,5 @@
 </script>
 
 <style lang="scss">
-	.lvyouclock{
-		.lvyouclock-header{
-			height: 127rpx;
-			width: 100%;
-			background-image: url(../../static/images/clock/clockHeader.png);
-			background-size: 100% 100%;
-			background-repeat: no-repeat;
-			position: relative;
-		}
-		
-	}
+	
 </style>

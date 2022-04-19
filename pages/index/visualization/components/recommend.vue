@@ -23,15 +23,18 @@
 						<view class="right-info">
 							<view class='text'  @click="goDetail(item.id)">
 								<view class='name line1'>{{item.lvyou_name}}</view>
-								<view class='describe'>{{item.lvyou_info}} </view>
+								<view class='describe line1'>{{item.lvyou_info}} </view>
 							</view>
 							<view class="clock-in">
 								<view class="clock-color">
 									<text>打卡人数:</text>
 									<text ><text class="clock-number">{{item.clock_people}}</text>人</text>
 								</view>
-								<view class="clock-state" @click="handleLvyouclock(item.id)">
-									{{item.is_clock?"已打卡":"立即打卡"}}
+								<view class="clock-state" v-if="item.is_clock">
+									已打卡
+								</view>
+								<view class="clock-state" v-else @click="handleLvyouclock(item.id)">
+									立即打卡
 								</view>
 							</view>
 						</view>
@@ -148,7 +151,6 @@
 				})
 			},
 			handleLvyouclock(id){
-				console.log("打卡")
 				getLvyouclock(id).then(res=>{
 					
 					if(res.status === 200){
@@ -160,12 +162,12 @@
 				})
 			},
 			goDetail(id) {
-				
-					getLvyouDetail(id).then(res => {
-						uni.navigateTo({
-							url: `/pages/goods_details/index?id=${id}`
-						})
+				// getLvyouDetail(id).then(res=>{
+					uni.navigateTo({
+						url: `/pages/goods_details/index?id=${id}`
 					})
+				// })
+				
 				
 			}
 		}
