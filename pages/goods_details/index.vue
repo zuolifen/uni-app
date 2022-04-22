@@ -127,7 +127,7 @@
 		.details-header{
 			margin-top: 48rpx;
 			width:100%;
-			background-image: url(../../static/images/clock/clockHeader.png);
+			background-image: url(../../static/images/clockHeader.png);
 			background-size: 100% 100;
 			font-size: 34rpx;
 			display: flex;
@@ -197,7 +197,7 @@
 			.clock-wrap{
 				width: 90%;
 				height: 88rpx;
-				background-image: url(../../static/images/clock/clockBg.png);
+				background-image: url(../../static/images/clockBg.png);
 				background-size: 100% 100%;
 				color: #fff;
 				font-size: 36rpx;

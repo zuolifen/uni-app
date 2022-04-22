@@ -1,7 +1,9 @@
 <template>
 	<view class="new-users copy-data" :style="{height:pageHeight}">
 		<view class="top" :style="colorStyle">
-			
+			<view class="head-bg">
+				<image class="header-bg-img" src="/static/images/header-all.png" mode=""></image>
+			</view>
 			<view class="sys-head">
 				<view class="sys-bar" :style="{height:sysHeight}"></view>
 				<view class="sys-title" :style="member_style==3?'color:#333':''">个人中心</view>
@@ -84,6 +86,27 @@
 				</view>
 				
 				
+			</view>
+		</view>
+		<!-- 个人中心列表部分 -->
+		<view class="users-content">
+			<view class="my-clock content-item">
+				<view class="left">
+					我的打卡
+				</view>
+				<image class="right-img" src="/static/images/right.png" mode=""></image>
+			</view>
+			<view class="integral-mall content-item">
+				<view class="left">
+					积分商城
+				</view>
+				<image class="right-img" src="/static/images/right.png" mode=""></image>
+			</view>
+			<view class="exchange-list content-item">
+				<view class="left">
+					兑换列表
+				</view>
+				<image class="right-img" src="/static/images/right.png" mode=""></image>
 			</view>
 		</view>
 		<tabBar v-if="!is_diy" :pagePath="'/pages/user/index'"></tabBar>
@@ -363,31 +386,7 @@
 						uni.hideLoading();
 					});
 			},
-			/**
-			 * 
-			 * 获取个人中心图标
-			 */
-			switchTab(order) {
-				this.orderMenu.forEach((item, index) => {
-					switch (item.title) {
-						case '待付款':
-							item.img = order.dfk
-							break
-						case '待发货':
-							item.img = order.dfh
-							break
-						case '待收货':
-							item.img = order.dsh
-							break
-						case '待评价':
-							item.img = order.dpj
-							break
-						case '售后/退款':
-							item.img = order.sh
-							break
-					}
-				})
-			},
+		
 			getMyMenus: function() {
 				let that = this;
 				// if (this.MyMenus.length) return;
@@ -484,6 +483,7 @@
 	page,
 	body {
 		height: 100%;
+		background-color: #fff;
 	}
 		.user-info {
 			height: 100%;
@@ -520,13 +520,25 @@
 		.top{
 			height: 380rpx;
 			width: 100%;
-			background: url("~@/static/images/header-all.png") no-repeat;
+			// background-image: url("~@/static/images/header-all.png");
 			background-size: 100% 100%;
 			// background-color: #70E038;
-			background-position: left bottom;
+			// background-position: left bottom;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
+				
+			.head-bg{
+				height: 380rpx;
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+					
+				.header-bg-img{
+					height: 100%;
+				}
+			}
 			.sys-head {
 				position: relative;
 				width: 100%;
@@ -558,7 +570,7 @@
 					z-index: 20;
 					position: relative;
 					display: flex;
-
+					margin-top: 90rpx;
 					.headwear {
 						position: absolute;
 						right: -4rpx;
@@ -684,7 +696,24 @@
 			padding: 0 10px;
 		}
 
-		
+		// 个人中心列表
+			
+		.users-content{
+			margin-top: 40rpx;
+			padding: 0 45rpx;
+			font-size: 30rpx;
+			color: #18263F;
+				
+			.content-item{
+				padding: 25rpx 0;
+				display: flex;
+				justify-content: space-between;
+				.right-img{
+					width: 18rpx;
+					height: 30rpx;
+				}
+			}
+		}
 
 		
 	}

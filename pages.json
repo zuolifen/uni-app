@@ -58,6 +58,17 @@
 				}
 			}
 		},
+		{
+			"path": "pages/myClock/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},
 		// {
 		// 	"path": "pages/goods_cate/goods_cate",
 		// 	"style": {
@@ -87,6 +98,7 @@
 			}
 		}
 	    
+        
     ],
 	"subPackages": [{
 			"root": "pages/news_list",
