@@ -177,7 +177,7 @@
 <style lang="scss">
 	.productList {
 		background-color: #fff;
-		margin: 20rpx 30rpx;
+		// margin: 20rpx 30rpx;
 		border-radius: $uni-border-radius-index;
 	}
 
@@ -245,8 +245,11 @@
 
 	.productList .item .pictrue {
 		position: relative;
-		width: 180rpx;
-		height: 180rpx;
+		width: 230rpx;
+		height: 235rpx;
+		background-image: url('~@/static/images/img-bg.png');
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
 	}
 
 	.productList .item .pictrue image {
@@ -264,7 +267,7 @@
 		width: 460rpx;
 		padding: 0rpx 17rpx 0rpx 17rpx;
 		font-size: 30rpx;
-		color: #222;
+		color: #999999;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -276,11 +279,7 @@
 			margin-bottom: 20rpx;
 		}
 
-		.type {
-			display: flex;
-
-
-		}
+		
 	}
 
 
@@ -313,6 +312,6 @@
 	}
 
 	.item-box {
-		margin: 0 auto;
+		padding: 20rpx 30rpx;
 	}
 </style>

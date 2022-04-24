@@ -1,12 +1,14 @@
 <template>
-	<view class="new-users copy-data" :style="{height:pageHeight}">
+	<view class="integral-mall copy-data" :style="{height:pageHeight}">
 		<view class="top" :style="colorStyle">
 			<view class="head-bg">
 				<image class="header-bg-img" src="/static/images/header-all.png" mode=""></image>
 			</view>
 			<view class="sys-head">
 				<view class="sys-bar" :style="{height:sysHeight}"></view>
-				<view class="sys-title" :style="member_style==3?'color:#333':''">个人中心</view>
+				<view class="sys-title" :style="member_style==3?'color:#333':''" @tap="back">
+					<image class="goback-img" src="/static/images/goBack.png" mode=""></image>
+					积分商城</view>
 			</view>
 			<view class="head">
 				<view class="user-card" :class="member_style==3?'unBg':''">
@@ -88,28 +90,10 @@
 				
 			</view>
 		</view>
-		<!-- 个人中心列表部分 -->
-		<view class="users-content">
-			<view class="my-clock content-item" @click="checkOeders">
-				<view class="left"  >
-					我的打卡
-				</view>
-				<image class="right-img" src="/static/images/right.png" mode=""></image>
-			</view>
-			<view class="integral-mall content-item" @click="toIntegralMall">
-				<view class="left">
-					积分商城
-				</view>
-				<image class="right-img" src="/static/images/right.png" mode=""></image>
-			</view>
-			<view class="exchange-list content-item">
-				<view class="left">
-					兑换列表
-				</view>
-				<image class="right-img" src="/static/images/right.png" mode=""></image>
-			</view>
+		<!-- 积分商城列表部分 -->
+		<view class="integral-mall-content">
+			
 		</view>
-		<tabBar v-if="!is_diy" :pagePath="'/pages/user/index'"></tabBar>
 		
 	</view>
 </template>
@@ -473,19 +457,10 @@
 
 			},
 			
-			// 去我的打卡页面
-			checkOeders(){
-				uni.navigateTo({
-					url: `/pages/myClock/index`
-				})
+			
+			back(){
+				uni.navigateBack()
 			},
-			//去积分商城页面
-				
-			toIntegralMall(){
-				uni.navigateTo({
-					url: `/pages/integralMall/index`
-				})
-			}
 			
 		}
 	}
@@ -524,7 +499,7 @@
 	
 
 
-	.new-users {
+	.integral-mall {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
@@ -558,13 +533,17 @@
 				
 
 				.sys-title {
-					z-index: 10;
-					position: relative;
-					height: 43px;
-					line-height: 43px;
-					font-size: 36rpx;
-					color: #333333;
-					padding-left: 30rpx;
+						z-index: 10;
+						position: relative;
+						height: 43px;
+						line-height: 43px;
+						font-size: 36rpx;
+						color: #333333;
+						padding-left: 30rpx;
+						.goback-img{
+							width: 18rpx;
+							height: 32rpx;
+						}
 					}
 		}
 			}
@@ -710,94 +689,15 @@
 
 		// 个人中心列表
 			
-		.users-content{
-			margin-top: 40rpx;
-			padding: 0 45rpx;
-			font-size: 30rpx;
-			color: #18263F;
-				
-			.content-item{
-				padding: 25rpx 0;
-				display: flex;
-				justify-content: space-between;
-				.right-img{
-					width: 18rpx;
-					height: 30rpx;
-				}
-			}
-		}
+		
 
 		
 	}
 
-	.setting {
-		margin-top: 15rpx;
-		margin-left: 15rpx;
-		color: #fff;
+	
 
-		.iconfont {
-			font-size: 40rpx;
-		}
-	}
-
-	.page-footer {
-		position: fixed;
-		bottom: 0;
-		z-index: 30;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-		width: 100%;
-		height: calc(98rpx+ constant(safe-area-inset-bottom)); ///兼容 IOS<11.2/
-		height: calc(98rpx + env(safe-area-inset-bottom)); ///兼容 IOS>11.2/
-		box-sizing: border-box;
-		border-top: solid 1rpx #F3F3F3;
-		background-color: #fff;
-		box-shadow: 0px 0px 17rpx 1rpx rgba(206, 206, 206, 0.32);
-		padding-bottom: constant(safe-area-inset-bottom); ///兼容 IOS<11.2/
-		padding-bottom: env(safe-area-inset-bottom); ///兼容 IOS>11.2/
-
-		.foot-item {
-			display: flex;
-			width: max-content;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
-			position: relative;
-
-			.count-num {
-				position: absolute;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				width: 40rpx;
-				height: 40rpx;
-				top: 0rpx;
-				right: -15rpx;
-				color: #fff;
-				font-size: 20rpx;
-				background-color: #FD502F;
-				border-radius: 50%;
-				padding: 4rpx;
-			}
-		}
-
-		.foot-item image {
-			height: 50rpx;
-			width: 50rpx;
-			text-align: center;
-			margin: 0 auto;
-		}
-
-		.foot-item .txt {
-			font-size: 24rpx;
-
-
-			&.active {}
-		}
-	}
-
-	.new-users {
+	
+	.integral-mall {
 		padding-bottom: 0;
 		padding-bottom: constant(safe-area-inset-bottom);
 		padding-bottom: env(safe-area-inset-bottom);

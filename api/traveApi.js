@@ -28,3 +28,10 @@ export function getLvyouDetail(id) {
 	});
 }
 
+// 我的打卡记录
+
+export function getMyrecord(data) {
+	return request.get("myrecord", data, {
+		noAuth: true
+	});
+}

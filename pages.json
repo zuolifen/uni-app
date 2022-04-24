@@ -13,7 +13,7 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom",
-				"navigationBarTextStyle": "white",
+				"navigationBarTextStyle": "black",
 				"app-plus": {
 					"scrollIndicator": "none"
 				}
@@ -52,7 +52,7 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom",
-				"navigationBarTextStyle": "white",
+				"navigationBarTextStyle": "black",
 				"app-plus": {
 					"scrollIndicator": "none"
 				}
@@ -63,26 +63,14 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom",
-				"navigationBarTextStyle": "white",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh":false,
 				"app-plus": {
 					"scrollIndicator": "none"
 				}
 			}
 		},
-		// {
-		// 	"path": "pages/goods_cate/goods_cate",
-		// 	"style": {
-		// 		"navigationBarTitleText": "商品分类",
-		// 		"app-plus": {
-		// 			// #ifdef APP-PLUS
-		// 			"titleNView": {
-		// 				"type": "default"
-		// 			}
-		// 			// #endif
-		// 		}
-
-		// 	}
-		// },
+	
 		//#ifdef H5
 		{
 			"path": "pages/auth/index",
@@ -99,6 +87,18 @@
 		}
 	    
         
+        ,{
+            "path" : "pages/integralMall/index",
+           "style": {
+           	"navigationBarTitleText": "",
+           	"navigationStyle": "custom",
+           	"navigationBarTextStyle": "black",
+           	"app-plus": {
+           		"scrollIndicator": "none"
+           	}
+           }
+            
+        }
     ],
 	"subPackages": [{
 			"root": "pages/news_list",
