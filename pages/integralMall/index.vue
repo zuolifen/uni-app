@@ -67,19 +67,16 @@
 							</view>
 							<!-- #endif -->
 							<view class="name" v-if="userInfo.uid">
-								{{userInfo.nickname}}
-								<image class="live" :src="userInfo.vip_icon" v-if="userInfo.vip_icon"></image>
+								可用积分：<text class="lvyou-integral">{{userInfo.lvyou_integral}}</text>
+								<!-- <image class="live" :src="userInfo.vip_icon" v-if="userInfo.vip_icon"></image>
 								<view class="vip" v-if="userInfo.is_money_level> 0 && userInfo.svip_open">
 									<image src="/static/images/svip.png"></image>
-								</view>
-							</view>
-							<view class="num" v-if="userInfo.phone" @click="goEdit()">
-								<view class="num-txt">ID：{{userInfo.uid}}</view>
-								<!-- <view class="icon">
-									<image src="/static/images/edit.png" mode=""></image>
 								</view> -->
 							</view>
-							<view class="phone" v-if="!userInfo.phone && isLogin" @tap="bindPhone">绑定手机号</view>
+							<!-- <view class="num" v-if="userInfo.phone" @click="goEdit()">
+								<view class="num-txt">ID：{{userInfo.uid}}</view>
+							</view> -->
+							<!-- <view class="phone" v-if="!userInfo.phone && isLogin" @tap="bindPhone">绑定手机号</view> -->
 						</view>
 						
 						
@@ -92,7 +89,28 @@
 		</view>
 		<!-- 积分商城列表部分 -->
 		<view class="integral-mall-content">
-			
+			<view class="integral-item" v-for="(item,index) in exchangeGoodsList" :key="index">
+				<view class="integral-info-content">
+					<view class='pictrue'  >
+						<image :src='item.image'></image>
+					</view>
+					<view class="right-info">
+						<view class='text'>
+							<view class='name line2'>{{item.goods_name}}</view>
+							<view class='describe line1'>{{item.goods_info}} </view>
+						</view>
+						<view class="clock-in">
+							<view class="clock-color">
+								<text>积分:</text>
+								<text ><text class="clock-number">{{item.goods_integral}}</text></text>
+							</view>
+							<view class="clock-state" @click="toExchange({integral:item.goods_integral,id:item.id})">
+								去兑换
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
 		</view>
 		
 	</view>
@@ -128,6 +146,7 @@
 	import {
 		getCustomer
 	} from '@/utils/index.js'
+	import { getExchangeGoodsList,exchangeGoods } from "@/api/traveApi.js";
 	export default {
 		components: {
 			tabBar,
@@ -181,6 +200,9 @@
 				member_style: 1,
 				my_banner_status: 1,
 				is_diy: uni.getStorageSync('is_diy'),
+				exchangeGoodsList:[],
+				page:1,
+				limit:10,
 			}
 		},
 		onLoad(option) {
@@ -264,6 +286,21 @@
 		},
 		onPullDownRefresh() {
 			this.onLoadFun();
+		},
+		onReachBottom() {
+			this.page++;
+			let data={
+				page:this.page,
+				limit:this.limit
+			}
+			this.getExchangeGoodsLists(data)
+		},
+		created() {
+			let data={
+				page:this.page,
+				limit:this.limit
+			}
+			this.getExchangeGoodsLists(data)
 		},
 		methods: {
 			getWechatuserinfo() {
@@ -372,78 +409,7 @@
 			},
 		
 			getMyMenus: function() {
-				let that = this;
-				// if (this.MyMenus.length) return;
-				getMenuList().then(res => {
-					let storeMenu = []
-					let myMenu = []
-					res.data.routine_my_menus.forEach((el, index, arr) => {
-						if (el.url == '/pages/admin/order/index' || el.url ==
-							'/pages/admin/order_cancellation/index' || el.name ==
-							'客服接待') {
-							storeMenu.push(el)
-						} else {
-							myMenu.push(el)
-						}
-					})
-					this.member_style = Number(res.data.diy_data.value)
-					this.my_banner_status = res.data.diy_data.my_banner_status
-					let order01 = {
-						dfk: 'icon-daifukuan',
-						dfh: 'icon-daifahuo',
-						dsh: 'icon-daishouhuo',
-						dpj: 'icon-daipingjia',
-						sh: 'icon-a-shouhoutuikuan'
-					}
-					let order02 = {
-						dfk: 'icon-daifukuan-lan',
-						dfh: 'icon-daifahuo-lan',
-						dsh: 'icon-daishouhuo-lan',
-						dpj: 'icon-daipingjia-lan',
-						sh: 'icon-shouhou-tuikuan-lan'
-					}
-					let order03 = {
-						dfk: 'icon-daifukuan-ju',
-						dfh: 'icon-daifahuo-ju',
-						dsh: 'icon-daishouhuo-ju',
-						dpj: 'icon-daipingjia-ju',
-						sh: 'icon-shouhou-tuikuan-ju'
-					}
-					let order04 = {
-						dfk: 'icon-daifukuan-fen',
-						dfh: 'icon-daifahuo-fen',
-						dsh: 'icon-daishouhuo-fen',
-						dpj: 'icon-daipingjia-fen',
-						sh: 'icon-a-shouhoutuikuan-fen'
-					}
-					let order05 = {
-						dfk: 'icon-daifukuan-lv',
-						dfh: 'icon-daifahuo-lv',
-						dsh: 'icon-daishouhuo-lv',
-						dpj: 'icon-daipingjia-lv',
-						sh: 'icon-shouhou-tuikuan-lv'
-					}
-					switch (res.data.diy_data.order_status) {
-						case 1:
-							this.switchTab(order01)
-							break
-						case 2:
-							this.switchTab(order02)
-							break
-						case 3:
-							this.switchTab(order03)
-							break
-						case 4:
-							this.switchTab(order04)
-							break
-						case 5:
-							this.switchTab(order05)
-							break
-					}
-					that.$set(that, 'MyMenus', myMenu);
-					that.$set(that, 'storeMenu', storeMenu);
-					this.routineContact = Number(res.data.routine_contact_type)
-				});
+				
 			},
 			// 编辑页面
 			goEdit() {
@@ -461,7 +427,34 @@
 			back(){
 				uni.navigateBack()
 			},
-			
+			// 获取积分商城列表信息
+			getExchangeGoodsLists(data){
+				let that =this;
+				getExchangeGoodsList(data).then((res)=>{
+					that.exchangeGoodsList = [...this.exchangeGoodsList,...res.data[0]];
+				})
+			},
+			//去兑换
+			toExchange({integral,id}){
+				
+				if(integral<this.userInfo.lvyou_integral){
+					exchangeGoods(id).then(res=>{
+						if(res.status===200){
+							uni.navigateTo({
+								url: `/pages/lvyouexchange/index`
+							})
+						}
+					})
+					
+					
+				}else{
+					uni.showToast({
+						title: '积分不足',
+						icon: 'error',
+						duration: 2000
+					});
+				}
+			}
 		}
 	}
 </script>
@@ -507,14 +500,12 @@
 		.top{
 			height: 380rpx;
 			width: 100%;
-			// background-image: url("~@/static/images/header-all.png");
-			background-size: 100% 100%;
-			// background-color: #70E038;
-			// background-position: left bottom;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-				
+			position: fixed;	
+			left: 0;
+			top: 0;
 			.head-bg{
 				height: 380rpx;
 				width: 100%;
@@ -645,14 +636,10 @@
 							color: #fff;
 							font-size: 31rpx;
 
-							.vip {
-								margin-left: 10rpx;
-
-								image {
-									width: 78rpx;
-									height: 30rpx;
-									display: block;
-								}
+								
+							.lvyou-integral{
+								font-size:40rpx ;
+								color: #146C50;
 							}
 						}
 
@@ -688,7 +675,82 @@
 		}
 
 		// 个人中心列表
-			
+		.integral-mall-content{
+			margin-top: 400rpx;
+			padding: 10rpx 20rpx;
+			.integral-item{
+				margin-bottom: 30rpx;
+				.integral-info-content{
+					width: 100%;
+					border-radius: 10rpx;
+					display: flex;	
+					.pictrue {
+						position: relative;
+						width: 230rpx;
+						height: 235rpx;
+						background-image: url('~@/static/images/img-bg.png');
+						background-repeat: no-repeat;
+						background-size: 100% 100%;
+						border: 4rpx solid #388363;
+						border-radius:10rpx ;
+						image {
+							width: 100%;
+							height: 100%;
+							border-radius: 10rpx;
+						}
+					}
+					.right-info{
+						display: flex;
+						flex-direction: column;
+						justify-content: space-around;
+						padding: 0 17rpx;
+						color: #999999;
+						.clock-in{
+							display: flex;
+							padding: 0rpx 17rpx 0rpx 17rpx;
+							justify-content: space-between;
+							.clock-color{
+								color: #146C50 ;
+								.clock-number{
+									font-size: 40rpx;
+								}
+							}
+							.clock-state{
+								width: 140rpx;
+								height: 70rpx;
+								background-image: url('~@/static/images/clock.png');
+								background-size: 100% 100%;
+								background-repeat: no-repeat;
+								color: #fff;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+							}
+						
+							
+						}
+						.text {
+							width: 460rpx;
+							padding: 0rpx 17rpx 0rpx 17rpx;
+							font-size: 30rpx;
+							
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+						
+							.name {
+								font-size: 32rpx;
+								font-weight: 600;
+								color: #333;
+								margin-bottom: 20rpx;
+							}
+						
+							
+						}
+					}
+				}
+			}
+		}
 		
 
 		

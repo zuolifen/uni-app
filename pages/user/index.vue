@@ -102,7 +102,7 @@
 				</view>
 				<image class="right-img" src="/static/images/right.png" mode=""></image>
 			</view>
-			<view class="exchange-list content-item">
+			<view class="exchange-list content-item" @click="toGoodsList">
 				<view class="left">
 					兑换列表
 				</view>
@@ -390,76 +390,7 @@
 			getMyMenus: function() {
 				let that = this;
 				// if (this.MyMenus.length) return;
-				getMenuList().then(res => {
-					let storeMenu = []
-					let myMenu = []
-					res.data.routine_my_menus.forEach((el, index, arr) => {
-						if (el.url == '/pages/admin/order/index' || el.url ==
-							'/pages/admin/order_cancellation/index' || el.name ==
-							'客服接待') {
-							storeMenu.push(el)
-						} else {
-							myMenu.push(el)
-						}
-					})
-					this.member_style = Number(res.data.diy_data.value)
-					this.my_banner_status = res.data.diy_data.my_banner_status
-					let order01 = {
-						dfk: 'icon-daifukuan',
-						dfh: 'icon-daifahuo',
-						dsh: 'icon-daishouhuo',
-						dpj: 'icon-daipingjia',
-						sh: 'icon-a-shouhoutuikuan'
-					}
-					let order02 = {
-						dfk: 'icon-daifukuan-lan',
-						dfh: 'icon-daifahuo-lan',
-						dsh: 'icon-daishouhuo-lan',
-						dpj: 'icon-daipingjia-lan',
-						sh: 'icon-shouhou-tuikuan-lan'
-					}
-					let order03 = {
-						dfk: 'icon-daifukuan-ju',
-						dfh: 'icon-daifahuo-ju',
-						dsh: 'icon-daishouhuo-ju',
-						dpj: 'icon-daipingjia-ju',
-						sh: 'icon-shouhou-tuikuan-ju'
-					}
-					let order04 = {
-						dfk: 'icon-daifukuan-fen',
-						dfh: 'icon-daifahuo-fen',
-						dsh: 'icon-daishouhuo-fen',
-						dpj: 'icon-daipingjia-fen',
-						sh: 'icon-a-shouhoutuikuan-fen'
-					}
-					let order05 = {
-						dfk: 'icon-daifukuan-lv',
-						dfh: 'icon-daifahuo-lv',
-						dsh: 'icon-daishouhuo-lv',
-						dpj: 'icon-daipingjia-lv',
-						sh: 'icon-shouhou-tuikuan-lv'
-					}
-					switch (res.data.diy_data.order_status) {
-						case 1:
-							this.switchTab(order01)
-							break
-						case 2:
-							this.switchTab(order02)
-							break
-						case 3:
-							this.switchTab(order03)
-							break
-						case 4:
-							this.switchTab(order04)
-							break
-						case 5:
-							this.switchTab(order05)
-							break
-					}
-					that.$set(that, 'MyMenus', myMenu);
-					that.$set(that, 'storeMenu', storeMenu);
-					this.routineContact = Number(res.data.routine_contact_type)
-				});
+				
 			},
 			// 编辑页面
 			goEdit() {
@@ -484,6 +415,13 @@
 			toIntegralMall(){
 				uni.navigateTo({
 					url: `/pages/integralMall/index`
+				})
+			},
+			//去兑换列表
+				
+			toGoodsList(){
+				uni.navigateTo({
+					url: `/pages/goods_list/index`
 				})
 			}
 			

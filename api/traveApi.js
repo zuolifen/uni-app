@@ -35,3 +35,16 @@ export function getMyrecord(data) {
 		noAuth: true
 	});
 }
+//积分商城列表
+export function getExchangeGoodsList(data) {
+	return request.get("exchange_goods_list", data, {
+		noAuth: true
+	});
+}
+
+// 商品兑换操作
+export function exchangeGoods(id) {
+	return request.get("exchange_goods?goods_id="+id, {}, {
+		noAuth: true
+	});
+}

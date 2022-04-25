@@ -99,6 +99,19 @@
            }
             
         }
+        ,{
+            "path" : "pages/lvyouexchange/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "navigationStyle": "custom",
+                "navigationBarTextStyle": "black",
+                "app-plus": {
+                	"scrollIndicator": "none"
+                }
+            }
+            
+        }
     ],
 	"subPackages": [{
 			"root": "pages/news_list",
