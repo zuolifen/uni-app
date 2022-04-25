@@ -11,10 +11,33 @@
 		<view class="goods-list-content">
 			<view class="goods-tab">
 				<view class="get"   @click="handleGetStatus(0)" :class="{'has':status===1}">
-					未领取
+					未领取 {{goodsRecordList.length}}
 				</view>
 				<view  class="get" @click="handleGetStatus(1)" :class="{'has':status===0}">
 					已领取
+				</view>
+			</view>
+			<view class="goods-item-wrap">
+				<view class="goods-item" v-for="(item, index) in goodsRecordList" :key="index">
+					<view class="clock-info-content">
+						<view class='pictrue'  >
+							<image :src='item.image'></image>
+						</view>
+						<view class="right-info">
+							<view class='text'>
+								<view class='name line1'>{{item.goods_name}}</view>
+								<view class="exchange-time">
+									兑换时间：{{format(item.add_time)}}
+								</view>
+							</view>
+							<view class="clock-in">
+								<view class="clock-color">
+									<text>取货码:</text>
+									<text ><text class="clock-number">{{item.exchange_no}}</text></text>
+								</view>
+							</view>
+						</view>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -37,6 +60,19 @@
 			back(){
 				uni.navigateBack()
 			},
+			// 格式化时间
+			format(d){
+				let date=new Date(d)
+				let year = date.getFullYear();
+				let month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+				let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+				let hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+				let minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+				let seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+					
+				return year + "年" + month + "月" + day+"日";
+			
+			},
 			//获取列表数据
 			getGoodsRecordListData(data){
 				let that =this;
@@ -46,7 +82,13 @@
 			},
 			//切换是否领取
 			handleGetStatus(status){
-				console.log(status)
+				this.$set(this,"status",status)
+				let data={
+					page:this.page,
+					limit:this.limit,
+					status:this.status,
+				}
+				this.getGoodsRecordListData(data)
 			}
 		},
 		onReachBottom() {
@@ -114,6 +156,70 @@
 				}
 				.has{
 					background-color: #F3F3F3;
+				}
+			}
+			.goods-item-wrap{
+				padding: 10rpx 30rpx;
+				.goods-item{
+					margin-bottom: 30rpx;
+					.clock-info-content{
+						width: 100%;
+						border-radius: 10rpx;
+						display: flex;	
+						.pictrue {
+							position: relative;
+							width: 230rpx;
+							height: 235rpx;
+							background-image: url('~@/static/images/img-bg.png');
+							background-repeat: no-repeat;
+							background-size: 100% 100%;
+							border: 4rpx solid #388363;
+							border-radius:10rpx ;
+							image {
+								width: 100%;
+								height: 100%;
+								border-radius: 10rpx;
+							}
+						}
+						.right-info{
+							display: flex;
+							flex-direction: column;
+							justify-content: space-around;
+							padding: 0 17rpx;
+							color: #999999;
+							.clock-in{
+								display: flex;
+								padding: 0rpx 17rpx 0rpx 17rpx;
+								justify-content: space-between;
+								// .clock-color{
+								// 	color: #EC1515 ;
+								// 	.clock-number{
+								// 		font-size: 40rpx;
+								// 	}
+								// }
+							
+								
+							}
+							.text {
+								width: 460rpx;
+								padding: 0rpx 17rpx 0rpx 17rpx;
+								font-size: 30rpx;
+								
+								display: flex;
+								flex-direction: column;
+								justify-content: space-between;
+							
+								.name {
+									font-size: 32rpx;
+									font-weight: 600;
+									color: #333;
+									margin-bottom: 20rpx;
+								}
+							
+								
+							}
+						}
+					}
 				}
 			}
 		}
