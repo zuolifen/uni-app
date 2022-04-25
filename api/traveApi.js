@@ -48,3 +48,9 @@ export function exchangeGoods(id) {
 		noAuth: true
 	});
 }
+// 兑换列表数据
+export function getGoodsRecordList(data) {
+	return request.get("goods_record_list", data, {
+		noAuth: true
+	});
+}
