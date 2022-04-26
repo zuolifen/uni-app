@@ -111,6 +111,7 @@
 		position: fixed;
 		top: 0;
 		z-index: 9;
+		background-color: #fff;
 		.header-bg-top{
 			height:48rpx ;
 			width: 100%;

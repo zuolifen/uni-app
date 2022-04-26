@@ -10,8 +10,8 @@
 		</view>
 		<view class="goods-list-content">
 			<view class="goods-tab">
-				<view class="get"   @click="handleGetStatus(0)" :class="{'has':status===1}">
-					未领取 {{goodsRecordList.length}}
+				<view class="get get-not"   @click="handleGetStatus(0)" :class="{'has':status===1}">
+					<text class="get-text">未领取<text class="get-top">{{goodsRecordList.length}}</text></text>
 				</view>
 				<view  class="get" @click="handleGetStatus(1)" :class="{'has':status===0}">
 					已领取
@@ -77,7 +77,7 @@
 			getGoodsRecordListData(data){
 				let that =this;
 				getGoodsRecordList(data).then((res)=>{
-					that.goodsRecordList = [...this.goodsRecordList,...res.data[0]];
+					that.goodsRecordList = res.data[0];
 				})
 			},
 			//切换是否领取
@@ -98,7 +98,10 @@
 				limit:this.limit,
 				status:this.status,
 			}
-			this.getGoodsRecordListData(data)
+			let that =this;
+			getGoodsRecordList(data).then((res)=>{
+				that.goodsRecordList = [...this.goodsRecordList,...res.data[0]];
+			})
 		},
 		created() {
 			let data={
@@ -121,6 +124,7 @@
 			position: fixed;
 			top: 0;
 			z-index: 9;
+			background-color: #fff;
 			.header-bg-top{
 				height:48rpx ;
 				width: 100%;
@@ -146,16 +150,39 @@
 				
 			.goods-tab{
 				display: flex;
-				height: 53rpx;
+				height: 64rpx;
+				font-size: 32rpx;
+					
+				.get-not{
+					.get-text{
+						position: relative;
+						.get-top{
+							position: absolute;
+							right: -37rpx;
+							top: -10rpx;
+							width: 35rpx;
+							height: 35rpx;
+							border-radius: 50%;
+							background-image: url('~@/static/images/top-number.png');
+							background-repeat: no-repeat;
+							background-size: 100% 100%;
+							color: #fff;
+							text-align: center;
+							line-height: 35rpx;
+						}
+					}
+				}
 				.get{
 					width: 50%;
 					display: flex;
 					justify-content: center;
 					align-items: center;
 					background-color: #FAFAFA;
+					color: #146C50;
 				}
 				.has{
 					background-color: #F3F3F3;
+					color: #333333;
 				}
 			}
 			.goods-item-wrap{
