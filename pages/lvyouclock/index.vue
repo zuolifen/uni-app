@@ -7,7 +7,12 @@
 			</view>
 		</view>
 		<view class="lvyouclock-content">
-			打卡成功
+			<view class="success-img">
+				<image src="~@/static/images/clock-success.png" mode=""></image>
+			</view>
+			<view class="success-text">
+				打卡成功
+			</view>
 		</view>
 		<view class="lvyouclock-footer">
 			<view class="go-orders go-item" @click="checkOeders">
@@ -80,8 +85,23 @@
 			}
 		}
 		.lvyouclock-content{
-			margin-top: 100rpx;
-			height: calc(100vh - 530rpx);
+			margin-top: 120rpx;
+			height: calc(100vh - 560rpx);
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			color: #333333;
+			.success-img{
+				height: 188rpx;
+				width: 153rpx;
+				image{
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.success-text{
+				font-size: 36rpx;
+			}
 		}
 		
 		.lvyouclock-footer{
