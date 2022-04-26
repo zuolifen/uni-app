@@ -92,18 +92,21 @@
 		<view class="users-content">
 			<view class="my-clock content-item" @click="checkOeders">
 				<view class="left"  >
-					我的打卡
+					<image class="left-img" src="~@/static/images/my-clock.png" mode=""></image>
+					<text>我的打卡</text>
 				</view>
 				<image class="right-img" src="/static/images/right.png" mode=""></image>
 			</view>
 			<view class="integral-mall content-item" @click="toIntegralMall">
 				<view class="left">
+					<image class="left-img" src="~@/static/images/integral-mall.png" mode=""></image>
 					积分商城
 				</view>
 				<image class="right-img" src="/static/images/right.png" mode=""></image>
 			</view>
 			<view class="exchange-list content-item" @click="toGoodsList">
 				<view class="left">
+					<image class="left-img" src="~@/static/images/goods-list.png" mode=""></image>
 					兑换列表
 				</view>
 				<image class="right-img" src="/static/images/right.png" mode=""></image>
@@ -516,6 +519,7 @@
 				margin: 0 auto;
 				background-color:#ffffff;
 				border-radius: 10rpx;
+				box-shadow: 0 0 8px 0 rgba(0, 0, 0, .1);
 				.user-info {
 					z-index: 20;
 					position: relative;
@@ -650,14 +654,25 @@
 			
 		.users-content{
 			margin-top: 40rpx;
-			padding: 0 45rpx;
+			
 			font-size: 30rpx;
 			color: #18263F;
-				
 			.content-item{
-				padding: 25rpx 0;
+				padding: 0rpx 45rpx;
+				height: 104rpx;
 				display: flex;
 				justify-content: space-between;
+				align-items: center;
+				border-bottom: 2rpx solid #eee;
+				.left{
+					display: flex;
+					align-items: center;
+					.left-img{
+						width: 52rpx;
+						height: 52rpx;
+						margin-right: 15rpx;
+					}
+				}
 				.right-img{
 					width: 18rpx;
 					height: 30rpx;

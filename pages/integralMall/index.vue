@@ -498,7 +498,7 @@
 		height: 100%;
 			
 		.top{
-			height: 380rpx;
+			height: 305rpx;
 			width: 100%;
 			display: flex;
 			flex-direction: column;
@@ -507,7 +507,7 @@
 			left: 0;
 			top: 0;
 			.head-bg{
-				height: 380rpx;
+				height: 305rpx;
 				width: 100%;
 				position: absolute;
 				left: 0;
@@ -548,11 +548,12 @@
 				margin: 0 auto;
 				background-color:#ffffff;
 				border-radius: 10rpx;
+				box-shadow: 0 0 8px 0 rgba(0, 0, 0, .1);
 				.user-info {
 					z-index: 20;
 					position: relative;
 					display: flex;
-					margin-top: 90rpx;
+					margin-top: 26rpx;
 					.headwear {
 						position: absolute;
 						right: -4rpx;
@@ -676,7 +677,7 @@
 
 		// 个人中心列表
 		.integral-mall-content{
-			margin-top: 400rpx;
+			margin-top: 360rpx;
 			padding: 10rpx 20rpx;
 			.integral-item{
 				margin-bottom: 30rpx;
