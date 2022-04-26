@@ -5,12 +5,12 @@
 				<view class='title acea-row row-between-wrapper'>
 					<view class='text'>
 						<view class='name line1'>
-							<text class="iconfont icon-jingpintuijian1"></text>
+							<image class="jingpingluxian" src="~@/static/images/home-icon.png" mode=""></image>
 							精品路线推荐
 						</view>
 						<view class='line1 txt-btn'>全新路线,限时折扣</view>
 					</view>
-					<view class='more' @click="gopage(titleInfo[2].val)">
+					<view class='more' @click="goMore">
 						查看更多
 						<text class='iconfont icon-jiantou'></text>
 					</view>
@@ -70,18 +70,10 @@
 	import {
 		mapState
 	} from 'vuex'
-	import {
-		goShopDetail,
-		goPage
-	} from '@/libs/order.js'
-	import {
-		getHomeProducts
-	} from '@/api/store.js';
+	
 	import {
 		getLvyouclock,getLvyouDetail
 	} from "@/api/traveApi.js";
-	import goodLists from '@/components/goodList/index.vue'
-	import colors from "@/mixins/color";
 	export default {
 		name: 'goodList',
 		props: {
@@ -89,10 +81,7 @@
 				type: Array,
 			}
 		},
-		mixins: [colors],
-		components: {
-			goodLists
-		},
+		
 		created() {
 
 		},
@@ -114,40 +103,10 @@
 			}
 		},
 		methods: {
-			// 产品列表
-			productslist: function() {
-				let that = this;
-				let data = {};
-				if (that.selectType) {
-					data = {
-						page: that.page,
-						limit: that.limit,
-						type: that.type,
-						ids: that.ids,
-						selectType: that.selectType
-					}
-				} else {
-					data = {
-						page: that.page,
-						limit: that.numConfig <= that.limit ? that.numConfig : that.limit,
-						type: that.type,
-						newsOrder: that.newsOrder,
-						salesOrder: that.salesOrder,
-						selectId: that.selectId,
-						selectType: that.selectType
-					}
-				}
-				getHomeProducts(data).then(res => {
-					that.bastList = res.data.list;
-				}).catch(err => {
-					that.$util.Tips({
-						title: err
-					});
-				});
-			},
-			gopage(url) {
+			
+			goMore() {
 				uni.navigateTo({
-					url: url
+					url: '/pages/live_list/index'
 				})
 			},
 			handleLvyouclock(id){
@@ -193,6 +152,12 @@
 			.name {
 				font-size: $uni-index-title-font-size;
 				font-weight: bold;
+					
+				.jingpingluxian{
+					height: 38rpx;
+					width: 38rpx;
+					margin-right: 8rpx;
+				}
 			}
 
 			.txt-btn {
@@ -283,13 +248,6 @@
 	}
 
 
-	.productList .item .text .vip {
-		font-size: 22rpx;
-		color: var(--view-priceColor);
-		margin-top: 7rpx;
-		display: flex;
-		align-items: center;
-	}
 
 	
 

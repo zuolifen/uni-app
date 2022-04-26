@@ -1,10 +1,10 @@
 <template>
-	<diy v-if="isDiy"></diy>
-	<visualization v-else></visualization>
+	<!-- <diy v-if="isDiy"></diy> -->
+	<visualization ></visualization>
 </template>
 
 <script>
-	import diy from './diy'
+	// import diy from './diy'
 	import visualization from './visualization'
 	import {getShare} from "@/api/public.js";
 	export default {
@@ -15,7 +15,7 @@
 			}
 		},
 		components: {
-			diy,
+			// diy,
 			visualization
 		},
 		onShow() {

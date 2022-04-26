@@ -224,7 +224,12 @@
 			"pages": [{
 				"path": "index",
 				"style": {
-					"navigationBarTitleText": "精彩内容"
+					"navigationBarTitleText": "",
+					"navigationStyle": "custom",
+					"navigationBarTextStyle": "black",
+					"app-plus": {
+						"scrollIndicator": "none"
+					}
 				}
 			}]
 		}, 
