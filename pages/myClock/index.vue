@@ -32,6 +32,7 @@
 				</view>
 			</view>
 		</view>
+		<view class="empty-txt" v-if="!isScroll">到底了~</view>
 	</view>
 </template>
 
@@ -42,6 +43,7 @@
 			return {
 				page:1,
 				limit:10,
+				isScroll: true,
 				myrecordDatas:[]
 			}
 		},
@@ -66,8 +68,10 @@
 			//获取列表数据
 				
 			getMyrecordDatas(data){
+				if (!this.isScroll) return
 				let that =this;
 				getMyrecord(data).then((res)=>{
+					that.isScroll = res.data.length >= that.limit
 					that.myrecordDatas = [...this.myrecordDatas,...res.data[0]];
 				})
 			},
@@ -201,6 +205,13 @@
 				}
 			}
 		}
+	}
+	.empty-txt {
+		height: 60rpx;
+		line-height: 60rpx;
+		text-align: center;
+		font-size: 24rpx;
+		color: #999;
 	}
 }
 </style>

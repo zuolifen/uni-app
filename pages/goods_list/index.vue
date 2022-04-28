@@ -82,6 +82,7 @@
 			},
 			//切换是否领取
 			handleGetStatus(status){
+				this.page=0;
 				this.$set(this,"status",status)
 				let data={
 					page:this.page,
