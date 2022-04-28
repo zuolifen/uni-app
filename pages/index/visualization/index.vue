@@ -21,7 +21,7 @@
 		<!-- #ifdef MP -->
 		<view class="indexTip" :style="'top:' + (navH + 50) + 'px'" :hidden="iShidden">
 			<view class="tip acea-row row-between-wrapper">
-				<view class="text">点击“<image src="/static/images/spot.png"></image>”添加到我的小程序， 微信首页下拉即可访问商城。</view>
+				<view class="text">点击“<image src="/static/images/spot.png"></image>”添加到我的小程序</view>
 				<view class="iconfont icon-guanbi1" @click="closeTip"></view>
 			</view>
 		</view>
@@ -268,7 +268,6 @@
 			}
 			this.getFollow();
 			// #endif
-			this.diyData();
 			this.getBannerList();
 			this.getLvproducts();
 			this.getIndexData();
@@ -456,27 +455,7 @@
 			},
 			
 			onLoadFun() {},
-			diyData() {
-				let that = this;
-				getDiy().then((res) => {
-					let data = res.data;
-					that.headerSerch = data.headerSerch;
-					that.alive = data.alive;
-					that.titles = data.titles;
-					that.tabNav = data.tabNav;
-					that.tabBar = data.tabBar;
-					that.customerService = data.customerService;
-					that.picTxt = data.picTxt;
-					that.bargain = data.bargain;
-					that.combination = data.combination;
-					that.adsRecommend = data.adsRecommend;
-					that.seckill = data.seckill;
-					this.$Cache.set("TAB_BAR", data.tabBar.default.tabBarList);
-					setTimeout(() => {
-						this.showSkeleton = false;
-					}, 1000);
-				});
-			},
+			
 			// 获取轮播图数据
 			getBannerList(){
 				let that = this;
